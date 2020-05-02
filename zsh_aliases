@@ -1,0 +1,185 @@
+# Reload Bash.
+alias rr='exec zsh'
+
+# Edit zshrc in VSCode.
+alias alz='subl ~/.zshrc'
+alias al='subl ~/.zsh_aliases'
+
+# Navigate to the previous directory.
+alias -- -='cd -'
+alias ..='cd ..'
+
+# Various shortcuts.
+alias dl='cd ~/Downloads'
+alias dt='cd ~/Desktop'
+alias wk='cd ~/Work'
+alias si='cd ~/Sites'
+alias gi='cd ~/Github'
+
+#
+# Editors
+#
+
+# VSCode.
+alias c='code'
+
+alias v='vim'
+
+# PS aliases.
+alias psa='ps aux'
+alias psg='ps aux | grep -i'
+
+#
+# Services
+#
+rsmysql='sudo systemctl restart mysqld.service'
+
+# Human readable DF & DU.
+alias df='df -h'
+alias du='du -h -d 2'
+
+# Clear & list directory.
+alias cls='clear; ls'
+alias clr='clear'
+
+# LS & grep.
+alias lsg='ll | grep -i'
+alias lla='ls -lah'
+
+# Make cp & mv to be verbose.
+alias cp='cp -v'
+alias mv='mv -v'
+
+# Use trash instead of rm.
+alias rm='trash'
+
+# Bat
+alias cat='bat'
+
+# Prettyping
+alias ping=prettyping
+
+#
+# macOS
+#
+
+# Updates.
+alias update_os='sudo softwareupdate -i -a'
+alias update_brew='brew -v update; brew upgrade; brew cleanup --prune=30; brew doctor'
+alias update_npm='npmgu'
+alias update_gem='sudo gem update --system; sudo gem update'
+alias update_prezto='cd ~/.zprezto && git pull && git submodule update --init --recursive && cd -'
+alias update_all='update_os; update_brew; update_npm; update_prezto'
+
+# Npm global updates
+function npmgu() {
+  for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f4)
+  do
+      npm -g --force install "$package"
+  done
+}
+
+# Clean LaunchServices.
+alias lscleanup='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder'
+
+# Empty trashes on all mounted volumes and the main HDD + Apple's System Logs.
+alias empty='sudo \rm -rfv /Volumes/*/.Trashes; sudo \rm -rfv ~/.Trash; sudo \rm -rfv /private/var/log/asl/*.asl'
+
+# Remove quarantine on a specific element.
+alias unquarantine='xattr -r -d com.apple.quarantine'
+
+# Approve a specific element from an unidenfied developer via the system-wide assessment rule database.
+alias approve='spctl --add --label "Approved"'
+
+#
+# Internet
+#
+
+# Get external IP.
+alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+# Flush Directory Service cache.
+alias flush='dscacheutil -flushcache && killall -HUP mDNSResponder'
+
+# Dig.
+alias dig='dig +nocmd any +multiline +noall +answer'
+
+# Edit the hosts file.
+alias hosts='sudo $EDITOR /etc/hosts'
+
+#
+# Dev
+#
+
+# URL encode.
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+# Delete local branches which have already been merged into the current HEAD.
+alias gitcleanup='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
+
+#
+# Projects
+#
+
+# Dotfiles
+alias dotfiles='cd ~/Github/dotfiles-osx'
+
+#
+# Git
+#
+alias gpl='git pull --prune'
+alias gs='git status'
+
+# Time
+alias week='date +%V'
+alias clock='date +%T'
+
+#
+# Laravel
+#
+
+artisan() {
+  if [ -f bin/artisan ]; then
+    php bin/artisan "$@"
+  else
+    php artisan "$@"
+  fi
+}
+
+alias art='php artisan'
+alias serve='artisan serve'
+alias tinker='artisan tinker'
+alias migrate='php artisan migrate'
+
+# Misc PHP
+
+t() {
+  if [ -f vendor/bin/phpunit ]; then
+    vendor/bin/phpunit "$@"
+  else
+    phpunit "$@"
+  fi
+}
+
+#
+# GIF stuff *_*
+# Copy a gif url in my clipboard
+# Just in case I need a gif asap.
+#
+
+alias fine='echo -n "https://media.giphy.com/media/z9AUvhAEiXOqA/giphy.gif" | pbcopy; echo "Fine gif copied to clipboard"'
+alias nope='echo -n "https://media.giphy.com/media/6h4z4b3v6XWxO/giphy.gif" | pbcopy; echo "Nope gif copied to clipboard"'
+alias wtf='echo -n "https://media.giphy.com/media/26xBG9lQdU5YTRnJS/giphy.gif" | pbcopy; echo "WTF gif copied to clipboard"'
+alias facepalm='echo -n "https://media.giphy.com/media/XsUtdIeJ0MWMo/giphy.gif" | pbcopy; echo "Facepalm gif copied to clipboard"'
+alias thumbsup='echo -n "https://media.giphy.com/media/l2YWCz0kmmgdx8feM/giphy.gif" | pbcopy; echo "ThumbsUp gif copied to clipboard"'
+alias godno='echo -n "https://media.giphy.com/media/12XMGIWtrHBl5e/giphy.gif" | pbcopy; echo "GODNO gif copied to clipboard"'
+alias what='echo -n "https://media.giphy.com/media/fpXxIjftmkk9y/giphy.gif" | pbcopy; echo "WHAT gif copied to clipboard"'
+alias please='echo -n "https://media.giphy.com/media/3h2lUwrZKilQKbAK6f/giphy.gif" | pbcopy; echo "PLS gif copied to clipboard"'
+alias eheheh='echo -n "https://media.giphy.com/media/9MFsKQ8A6HCN2/giphy.gif" | pbcopy; echo "EHEHEH gif copied to clipboard"'
+alias look='echo -n "https://giphy.com/gifs/funny-reaction-cute-E6gUCRWYFqDO8" | pbcopy; echo "LOOK gif copied to clipboard"'
+
+alias shrug="echo '¯\_(ツ)_/¯' | pbcopy; echo 'Shrug copied to clipboard'";
+alias fight="echo '(ง'̀-'́)ง' | pbcopy; echo 'Fight copied to clipboard'";
+
+# Clean the clipboard
+alias gclean='pbcopy </dev/null; echo "Clipboard cleaned."'

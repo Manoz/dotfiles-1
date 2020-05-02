@@ -1,5 +1,0 @@
-# Default stream to open.
-default-stream=best
-
-# Player
-player=/Applications/VLC.app/Contents/MacOS/VLC

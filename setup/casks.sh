@@ -2,30 +2,24 @@
 
 echo "Installing Homebrew-Cask."
 
-brew tap caskroom/cask
-brew tap caskroom/versions
+brew tap homebrew/cask-cask
+brew tap homebrew/cask-versions
 
 apps=(
   alfred
   appcleaner
-  calibre
   couleurs
   discord
-  dropbox
   fantastical
   firefox
-  google-chrome-canary
   imageoptim
-  insomnia
   istat-menus
   iterm2-beta
   kaleidoscope
-  karabiner-elements
   licecap
-  rectangle
   slack
   spotify
-  steam
+  sublime-text
   the-unarchiver
   visual-studio-code
   vlc

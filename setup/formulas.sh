@@ -8,13 +8,10 @@ apps=(
   ctags
   curl
   diff-so-fancy
-  fzf
   git
   git-extras
   grep
   htop
-  hub
-  mongodb
   mtr
   node
   perl
@@ -23,8 +20,6 @@ apps=(
   rtmpdump
   ruby
   Schniz/tap/fnm
-  streamlink
-  the_silver_searcher
   tldr
   trash
   tree
@@ -38,9 +33,5 @@ apps=(
 brew install "${apps[@]}"
 
 brew cleanup
-
-echo "Installing fzf key bindings."
-
-$(brew --prefix)/opt/fzf/install
 
 exit 0

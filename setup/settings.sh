@@ -146,7 +146,7 @@ chflags nohidden ~/Library
 #
 
 # Set the icon size of Dock items to 36 pixels.
-defaults write com.apple.dock tilesize -int 50
+defaults write com.apple.dock tilesize -int 36
 
 # Disable size modification.
 defaults write com.apple.dock size-immutable -bool true
@@ -156,7 +156,7 @@ defaults write com.apple.dock size-immutable -bool true
 #
 
 # Disable the Dashboard.
-defaults write com.apple.dashboard mcx-disabled -bool true
+defaults write com.apple.dashboard mcx-disabled -bool false
 
 # Don’t show Dashboard as a Space.
 defaults write com.apple.dock dashboard-in-overlay -bool true
@@ -258,9 +258,6 @@ defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 
 # Make ⌘ + F focus the search input in iTunes.
 defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
-
-# Disable smart quotes in Messages as it’s annoying for messages that contain code.
-defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 
 # Prevent Photos from opening automatically when devices are plugged in.
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true

@@ -23,9 +23,9 @@
     ~/.zlogout:
     ~/.zprofile:
     ~/.zshenv:
+    ~/.zsh_aliases:
     ~/.zshrc:
     ~/.zpreztorc:
-    ~/.streamlinkrc:
     ~/.wgetrc:
     ~/.vimrc:
     ~/.gitconfig:
